@@ -3,9 +3,11 @@
 
 #include <cstdint>
 #include <vector>
+#include <iostream>
 
 class Matrix {
 public:
+    std::vector<std::vector<int>> matrix_vector;
     Matrix(std::size_t N);
     Matrix(std::vector<std::vector<int>> nums);
 
