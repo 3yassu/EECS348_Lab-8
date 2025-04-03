@@ -77,7 +77,7 @@ int Matrix::sum_diagonal_minor() const{
 }
 void Matrix::swap_rows(std::size_t r1, std::size_t r2){
     std::size_t size = matrix_vector.size();
-    if (r1 > size && r2 > size) {
+    if (r1 < size && r2 < size) {
         vector<int> temp = matrix_vector[r1];
         matrix_vector[r1] = matrix_vector[r2];
         matrix_vector[r2] = temp;
