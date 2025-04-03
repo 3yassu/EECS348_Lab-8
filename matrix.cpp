@@ -57,6 +57,7 @@ void Matrix::set_value(std::size_t i, std::size_t j, int n){
 int Matrix::get_value(std::size_t i, std::size_t j) const {
     std::size_t size = matrix_vector.size();
     if (i < size && j < size) {return (matrix_vector)[i][j];}
+    else{throw out_of_range("out_of_bounds");}
 }
 int Matrix::get_size() const{
     return matrix_vector.size();
