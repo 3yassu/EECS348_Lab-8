@@ -38,7 +38,9 @@ int main() {
     Matrix tob(matrix2);
     bot+tob;
     bot*tob;
+    cout << "major Diagonal: ";
     bot.sum_diagonal_major();
+    cout << "minor diagonal: ";
     bot.sum_diagonal_minor();
     bot.swap_cols(1, 2);
     bot.swap_rows(1, 2);
