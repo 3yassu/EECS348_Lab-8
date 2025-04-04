@@ -35,18 +35,14 @@ int main() {
     auto [matrix1, matrix2] = readMatrixFromFile(filename);
 
     Matrix bot(matrix1);
-    bot.print_matrix();
-    Matrix top(matrix2);
-    cout << bot.sum_diagonal_major() << endl;
-    cout << bot.sum_diagonal_minor() << endl << bot.get_size() << endl;
-    Matrix a = top*bot;
-    Matrix b = top+bot;
-    a.print_matrix();
-    b.print_matrix();
-    bot.swap_rows(1, 2);
+    Matrix tob(matrix2);
+    bot+tob;
+    bot*tob;
+    bot.sum_diagonal_major();
+    bot.sum_diagonal_minor();
     bot.swap_cols(1, 2);
-    bot.print_matrix();
-    top.print_matrix();
+    bot.swap_rows(1, 2);
+    bot.set_value(1, 1, 0);
     return 0;
 }
 
