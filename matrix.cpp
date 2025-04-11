@@ -20,41 +20,44 @@ void Matrix::print_matrix() const {
     int size = matrix_vector.size();
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            cout << (matrix_vector)[i][j] << " ";
+            cout << (matrix_vector)[i][j] << " | ";
         }
         cout << endl;
     }
     cout << endl;
 }
 Matrix Matrix::operator*(const Matrix &rhs) const {
-    Matrix matrix_return(matrix_vector.size());
     int size = matrix_vector.size();
+    vector<vector<int>> matrix_return(size, vector<int>(size));
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
             int dot_prod = 0;
             for(int k = 0; k < size; k++){
                 dot_prod += matrix_vector[i][k]*rhs.get_value(k, j);
             }
-            matrix_return.set_value(i, j, dot_prod);
+            matrix_return[i][j] = dot_prod;
         }
     }
-    matrix_return.print_matrix();
-    return matrix_return;
+    Matrix returner(matrix_return);
+    returner.print_matrix();
+    return returner;
 }
 Matrix Matrix::operator+(const Matrix &rhs) const {
-    Matrix matrix_return(matrix_vector.size());
     int size = matrix_vector.size();
+    vector<vector<int>> matrix_return(size, vector<int>(size));
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            matrix_return.set_value(i, j, (matrix_vector[i][j] + (rhs.get_value(i, j))));
+            matrix_return[i][j] = (matrix_vector[i][j] + (rhs.get_value(i, j)));
         }
     }
-    matrix_return.print_matrix();
-    return matrix_return;
+    Matrix returner(matrix_return);
+    returner.print_matrix();
+    return returner;
 }
 void Matrix::set_value(std::size_t i, std::size_t j, int n){
     std::size_t size = matrix_vector.size();
     if (i < size && j < size) {matrix_vector[i][j] = n;}
+    print_matrix();
 }
 int Matrix::get_value(std::size_t i, std::size_t j) const {
     std::size_t size = matrix_vector.size();
@@ -88,6 +91,7 @@ void Matrix::swap_rows(std::size_t r1, std::size_t r2){
         matrix_vector[r2] = temp;
     }
     print_matrix();
+
 }
 void Matrix::swap_cols(std::size_t c1, std::size_t c2){
     int size = matrix_vector.size();
