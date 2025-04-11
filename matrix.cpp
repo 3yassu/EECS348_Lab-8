@@ -38,6 +38,7 @@ Matrix Matrix::operator*(const Matrix &rhs) const {
             matrix_return.set_value(i, j, dot_prod);
         }
     }
+    matrix_return.print_matrix();
     return matrix_return;
 }
 Matrix Matrix::operator+(const Matrix &rhs) const {
@@ -48,6 +49,7 @@ Matrix Matrix::operator+(const Matrix &rhs) const {
             matrix_return.set_value(i, j, (matrix_vector[i][j] + (rhs.get_value(i, j))));
         }
     }
+    matrix_return.print_matrix();
     return matrix_return;
 }
 void Matrix::set_value(std::size_t i, std::size_t j, int n){
@@ -67,6 +69,7 @@ int Matrix::sum_diagonal_major() const{
     for(int i = 0; i < size; i++){
         adder += (matrix_vector)[i][i];
     }
+    cout << adder << endl;
     return adder;
 }
 int Matrix::sum_diagonal_minor() const{
@@ -74,6 +77,7 @@ int Matrix::sum_diagonal_minor() const{
     for(int i = 0; i < size; i++){
         adder += (matrix_vector)[i][size-i-1];
     }
+    cout << adder << endl;
     return adder;
 }
 void Matrix::swap_rows(std::size_t r1, std::size_t r2){
@@ -83,6 +87,7 @@ void Matrix::swap_rows(std::size_t r1, std::size_t r2){
         matrix_vector[r1] = matrix_vector[r2];
         matrix_vector[r2] = temp;
     }
+    print_matrix();
 }
 void Matrix::swap_cols(std::size_t c1, std::size_t c2){
     int size = matrix_vector.size();
@@ -98,4 +103,5 @@ void Matrix::swap_cols(std::size_t c1, std::size_t c2){
             (matrix_vector)[j][c2] = temp1[j];
         }
     }
+    print_matrix();
 }
